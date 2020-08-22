@@ -1,4 +1,5 @@
 import React from "react";
+import "../Table.css";
 
 export default class PokemonList extends React.Component {
   state = {
@@ -7,7 +8,7 @@ export default class PokemonList extends React.Component {
   };
 
   async componentDidMount() {
-    const url = "http://localhost:3000/pokemon";
+    const url = "https://sheltered-mountain-61518.herokuapp.com/pokemon";
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ pokemon: data, loading: false });    
@@ -25,7 +26,7 @@ export default class PokemonList extends React.Component {
 
     return (
       <div>
-        <table>{this.state.pokemon.map(item => 
+        <table id="table">{this.state.pokemon.map(item => 
         <tr><td>{item.id}</td><td>{item.name.english}</td>
         <td>{item.type.map(type => ` ${type}`)}</td>
         <td>{`Attack: ${item.base.Attack}`}</td>
